@@ -8,13 +8,15 @@ on:
     default: "Prince"
 run-name: "Expressions & Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
 jobs:
-  using-expressions-and-contexts:
+  Saying-My-Name:
     runs-on: ubuntu-latest
     steps:
       - name: Say Name
         run: echo My Name is "${{ github.event.inputs.username }}"
+  Other-Steps:
+    runs-on: ubuntu-latest
+    steps:
       - name: Expressions
-        id: expressions
         run: |
           echo ${{ 1 }}
           echo ${{ 'This is a string' }}
