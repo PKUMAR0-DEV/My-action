@@ -1,5 +1,5 @@
 
-name: Statuc Check Functions
+name: Status Check Functions
 on: [push]
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
       - run: echo 'Job 2'
   job-3:
     runs-on: ubuntu-latest
-    steps: step-3
+    steps: 
      - name: list files
        run: ls -a
      - name: create folder
