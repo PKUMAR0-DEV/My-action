@@ -1,20 +1,30 @@
 name: Expressions & Contexts
-on: 
- workflow_dispatch:
-  inputs:
-   uername:
-    description: "Enter your name"
-    required: true
-    default: "Prince"
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "Enter your name"
+        required: true
+        default: "Prince"
+
 run-name: "Expressions & Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
+
 jobs:
   Saying-My-Name:
     runs-on: ubuntu-latest
+    outputs:
+      username: ${{ steps.get-name.outputs.username }}
     steps:
-      - name: Say Name
-        run: echo "My Name is ${{ inputs.username }}"
+      - name: Get and Say Name
+        id: get-name
+        run: |
+          echo "username=${{ inputs.username }}" >> $GITHUB_OUTPUT
+          echo "My Name is ${{ inputs.username }}"
+
   Other-Steps:
     runs-on: ubuntu-latest
+    needs: Saying-My-Name
     steps:
       - name: Expressions
         run: |
@@ -26,6 +36,7 @@ jobs:
           echo ${{ 'string' == 'String' }}
           echo ${{ true && false }}
           echo ${{ true || (false && true) }}
+
       - name: Dump Contexts
         run: |
           echo '${{ toJson(github) }}'
@@ -33,5 +44,3 @@ jobs:
           echo '${{ toJson(secrets) }}'
           echo '${{ toJson(steps) }}'
           echo '${{ toJson(runner) }}'
-      
-      
