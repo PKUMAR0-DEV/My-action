@@ -27,3 +27,10 @@ jobs:
     if: failure()
     steps:
       - run: echo 'Job 2'
+  job-3:
+    runs-on: ubuntu-latest
+    steps: step-3
+     - name: list files
+       run: ls -a
+     - name: create folder
+       run: mkdir prince
