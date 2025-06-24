@@ -5,6 +5,8 @@ jobs:
   using-expressions-and-contexts:
     runs-on: ubuntu-latest
     steps:
+      - name: Say Name
+        run: echo "My Name is Prince"
       - name: Expressions
         id: expressions
         run: |
