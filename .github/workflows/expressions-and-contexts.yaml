@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say Name
-        run: echo My Name is "${{ github.event.inputs.username }}"
+        run: echo "My Name is ${{ inputs.username }}"
   Other-Steps:
     runs-on: ubuntu-latest
     steps:
