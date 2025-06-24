@@ -13,14 +13,9 @@ run-name: "Expressions & Contexts by @${{ github.actor }}, event: ${{ github.eve
 jobs:
   Saying-My-Name:
     runs-on: ubuntu-latest
-    outputs:
-      username: ${{ steps.get-name.outputs.username }}
     steps:
-      - name: Get and Say Name
-        id: get-name
-        run: |
-          echo "username=${{ inputs.username }}" >> $GITHUB_OUTPUT
-          echo "My Name is ${{ inputs.username }}"
+      - name: Say My Name
+        run: echo "My Name is ${{ inputs.username }}"
 
   Other-Steps:
     runs-on: ubuntu-latest
