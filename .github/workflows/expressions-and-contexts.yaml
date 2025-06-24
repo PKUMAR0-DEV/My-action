@@ -1,12 +1,18 @@
 name: Expressions & Contexts
-on: [push, pull_request, issues, workflow_dispatch]
+on: 
+ workflow_dispatch:
+  inputs:
+   uername:
+    description: "Enter your name"
+    required: true
+    default: "Prince"
 run-name: "Expressions & Contexts by @${{ github.actor }}, event: ${{ github.event_name }}"
 jobs:
   using-expressions-and-contexts:
     runs-on: ubuntu-latest
     steps:
       - name: Say Name
-        run: echo "My Name is Prince"
+        run: echo "My Name is ${{ github.event.inputs.username }}"
       - name: Expressions
         id: expressions
         run: |
