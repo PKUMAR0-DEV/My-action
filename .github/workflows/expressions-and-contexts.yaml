@@ -1,1 +1,24 @@
+name: Expression & Contexts
+on: [push, workflow_dispatch]
 
+jobs: 
+ using-expression-and-contexts:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Expression
+     id: expression
+     run: |
+      echo "My First Action-PRince"
+      echo ${{ 1 }}
+      echo ${{ 'This is Secho ${{ true && false }}
+      echo ${{ true || (false && true) }}tring' }}
+   - name: Dump Contexts
+     run: |
+          echo '${{ toJson(github) }}'
+          echo '${{ toJson(job) }}'
+          echo '${{ toJson(secrets) }}'
+          echo '${{ toJson(steps) }}'
+          echo '${{ toJson(runner) }}'
+      
+      
+      
