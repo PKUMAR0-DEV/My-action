@@ -8,7 +8,6 @@ jobs:
    - name: Expression
      id: expression
      run: |
-      echo "My First Action-PRince"
       echo ${{ 1 }}
       echo ${{ 'This is Secho ${{ true && false }}
       echo ${{ true || (false && true) }}tring' }}
