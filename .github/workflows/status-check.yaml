@@ -38,7 +38,7 @@ jobs:
       - name: List files in workspace
         run: |
           echo "Listing all files including hidden ones:"
-          ls -a
+          ls -l
 
       - name: Create folder named 'prince'
         run: |
