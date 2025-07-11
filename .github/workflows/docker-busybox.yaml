@@ -33,4 +33,4 @@ jobs:
         uses: docker://nginx:latest
         with:
           entrypoint: /bin/bash
-          args: -c "busybox --help"
+          args: -c "nginx --help"
