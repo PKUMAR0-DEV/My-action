@@ -1,6 +1,5 @@
 name: Caching and Artifacts
-on: 
- push
+on: [workflow_dispatch]
 jobs:
   use-axios:
     runs-on: ubuntu-latest
@@ -11,11 +10,31 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: "npm-cache"
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }} # linux-npm-cache-7383493
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+            ${{ runner.os }}-
       - name: Display Cache Output
         run: echo '${{ toJSON(steps.cache-dependencies.outputs) }}'
       - name: Install dependencies
         run: npm install
+      - name: Run Tests
+        run: npm test
+      - name: Upload Code Coverage Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: code-coverage
+          path: coverage
+          retention-days: 10
+      - name: Download Code Coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage
+          path: code-coverage-report
+      - run: ls -a
+      - run: ls -a
+        working-directory: code-coverage-report
       - name: Use Axios
         uses: actions/github-script@v6
         with:
