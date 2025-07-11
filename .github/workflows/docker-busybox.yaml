@@ -26,11 +26,11 @@ jobs:
       - name: Container in a Step
         uses: docker://nginx:latest
         with:
-          entrypoint: /bin/bash
+          entrypoint: /bin/sh
           args: -c "echo $((2 + 3))"
 
       - name: Log BusyBox Version
         uses: docker://nginx:latest
         with:
-          entrypoint: /bin/bash
-          args: -c "nginx --help"
+          entrypoint: /bin/sh
+          args: -c "busybox --help"
