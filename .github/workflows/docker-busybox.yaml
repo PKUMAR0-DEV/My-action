@@ -1,0 +1,35 @@
+name: Docker (BusyBox)
+
+on: [workflow_dispatch]
+
+jobs:
+  docker-job:
+    runs-on: ubuntu-latest
+    container:
+      image: busybox:latest
+      env:
+        API_URL: some-url.com
+      ports:
+        - 80
+      # volumes:
+      #   - vol_name:/path/in/container
+      #   - /path/to/container
+      #   - /path/in/host:/path/in/container
+      # options: --cpus 1
+    steps:
+      - name: Log OS Version
+        run: cat /etc/os-release || echo "BusyBox doesn't include /etc/os-release"
+
+      - name: Log Env
+        run: echo $API_URL
+
+      - name: Container in a Step
+        uses: docker://busybox:latest
+        with:
+          entrypoint: /bin/sh
+          args: -c "echo $((2 + 3))"
+
+      - name: Log BusyBox Version
+        uses: docker://busybox:latest
+        with:
+          args: --help
