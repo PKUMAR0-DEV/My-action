@@ -32,4 +32,5 @@ jobs:
       - name: Log BusyBox Version
         uses: docker://busybox:latest
         with:
+          entrypoint: /bin/sh
           args: -c "busybox --help"
