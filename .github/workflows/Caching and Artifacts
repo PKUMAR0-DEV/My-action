@@ -1,5 +1,6 @@
 name: Caching and Artifacts
-on: [workflow_dispatch]
+on: 
+ workflow_dispatch
 jobs:
   use-axios:
     runs-on: ubuntu-latest
