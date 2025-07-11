@@ -24,13 +24,13 @@ jobs:
         run: echo $API_URL
 
       - name: Container in a Step
-        uses: docker://busybox:latest
+        uses: docker://nginx:latest
         with:
-          entrypoint: /bin/sh
+          entrypoint: /bin/bash
           args: -c "echo $((2 + 3))"
 
       - name: Log BusyBox Version
-        uses: docker://busybox:latest
+        uses: docker://nginx:latest
         with:
-          entrypoint: /bin/sh
+          entrypoint: /bin/bash
           args: -c "busybox --help"
