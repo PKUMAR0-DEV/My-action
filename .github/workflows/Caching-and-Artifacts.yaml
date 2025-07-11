@@ -4,10 +4,10 @@ jobs:
   use-axios:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Cache node modules
         id: cache-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }} # linux-npm-cache-7383493
@@ -21,14 +21,14 @@ jobs:
       - name: Run Tests
         run: npm test
       - name: Upload Code Coverage Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: code-coverage
           path: coverage
           retention-days: 10
       - name: Download Code Coverage
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: code-coverage
           path: code-coverage-report
