@@ -27,7 +27,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            alialaa17/simple-node-api
+            prince9090/simple-node-api
             ghcr.io/${{ github.repository }}
           tags: |
             type=semver,pattern={{version}}
