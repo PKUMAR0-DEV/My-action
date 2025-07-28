@@ -6,6 +6,8 @@ on:
 jobs:
   push-to-dockerhub-and-ghcr:
     runs-on: ubuntu-latest
+    environment: 
+          name: build 
     permissions:
       packages: write
       contents: read
